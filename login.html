@@ -1,0 +1,38 @@
+<!-- main app container -->
+<div class="card m-3">
+    <h5 class="card-header">Login Page </h5>
+    <div class="card-body">
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
+            <div class="form-row">
+              
+                <div class="form-group col">
+                    <label>User Name</label>
+                    <input type="text" name="firstName" class="form-control" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
+                    <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                        <div *ngIf="firstName.errors.required"> Name is required</div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6">
+                    <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                        <div *ngIf="password.errors.required">Password is required</div>
+                        <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+              
+            </div>
+         
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Submit</button>
+               
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- credits -->
